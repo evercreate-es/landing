@@ -78,12 +78,12 @@ export function WaitlistForm({ industry }: WaitlistFormProps) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           autoFocus
-          className="rounded-lg bg-white/10 border border-white/20 px-4 py-2 text-sm text-white placeholder-white/40 outline-none focus:border-white/40 transition-colors"
+          className="rounded-xl bg-white/5 border border-white/10 px-4 py-2 text-sm text-white placeholder-white/30 outline-none focus:border-teal-500 focus:shadow-[0_0_12px_rgba(20,184,166,0.2)] transition-all"
         />
         <button
           type="submit"
           disabled={status === 'loading'}
-          className="rounded-lg bg-white/10 border border-white/20 px-4 py-2 text-sm text-white hover:bg-white/20 transition-colors disabled:opacity-50 cursor-pointer"
+          className="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-black transition-all disabled:opacity-50 cursor-pointer hover:shadow-[0_0_20px_rgba(20,184,166,0.3)] hover:scale-[1.02]"
         >
           {status === 'loading' ? '...' : 'Join'}
         </button>
