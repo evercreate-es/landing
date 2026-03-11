@@ -14,6 +14,7 @@ export default function HomePage() {
       subtitle={LANDING_SUBLINE}
       subline=""
       industry={undefined}
+      badge="Exclusive Early Access"
     />
   )
 }

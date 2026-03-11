@@ -46,6 +46,7 @@ export default async function IndustryPage({
       subtitle={industry.subtitle}
       subline={LANDING_SUBLINE}
       industry={industry.slug}
+      badge={industry.name}
     />
   )
 }
