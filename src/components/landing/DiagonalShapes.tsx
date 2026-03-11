@@ -3,9 +3,8 @@
 import { motion, useReducedMotion } from 'framer-motion'
 
 interface BarConfig {
-  width: number
-  height: number
-  rotation: number
+  width: number   // horizontal width of the flat top/bottom edge
+  height: number  // vertical extent of the parallelogram
   x: string
   y: string
   color: string
@@ -13,16 +12,19 @@ interface BarConfig {
   duration: number
 }
 
-// Rotation matches the Evercreate logo diagonal stripes exactly (~63°)
-const LOGO_ROTATION = -63
+// The logo stripes are parallelograms: horizontal top/bottom, diagonal sides.
+// Calculated from SVG: horizontal offset 26.85 over height 53.7 → skewX(-27°)
+const LOGO_SKEW = -27
 
 const bars: BarConfig[] = [
-  { width: 650, height: 70, rotation: LOGO_ROTATION, x: '2%',  y: '10%', color: 'rgba(20,184,166,0.12)',  delay: 0.3, duration: 14 },
-  { width: 480, height: 50, rotation: LOGO_ROTATION, x: '8%',  y: '65%', color: 'rgba(234,179,8,0.10)',   delay: 0.5, duration: 12 },
-  { width: 280, height: 35, rotation: LOGO_ROTATION, x: '18%', y: '40%', color: 'rgba(255,255,255,0.08)', delay: 0.7, duration: 11 },
-  { width: 580, height: 60, rotation: LOGO_ROTATION, x: '75%', y: '15%', color: 'rgba(234,179,8,0.10)',   delay: 0.4, duration: 13 },
-  { width: 420, height: 45, rotation: LOGO_ROTATION, x: '82%', y: '68%', color: 'rgba(20,184,166,0.12)',  delay: 0.6, duration: 10 },
-  { width: 250, height: 30, rotation: LOGO_ROTATION, x: '70%', y: '45%', color: 'rgba(255,255,255,0.06)', delay: 0.8, duration: 12 },
+  // Left side
+  { width: 80, height: 550, x: '-2%', y: '-5%',  color: 'rgba(20,184,166,0.12)',  delay: 0.3, duration: 14 },
+  { width: 55, height: 400, x: '10%', y: '30%',  color: 'rgba(234,179,8,0.10)',   delay: 0.5, duration: 12 },
+  { width: 35, height: 280, x: '22%', y: '15%',  color: 'rgba(255,255,255,0.08)', delay: 0.7, duration: 11 },
+  // Right side
+  { width: 70, height: 500, x: '80%', y: '-10%', color: 'rgba(234,179,8,0.10)',   delay: 0.4, duration: 13 },
+  { width: 50, height: 380, x: '90%', y: '35%',  color: 'rgba(20,184,166,0.12)',  delay: 0.6, duration: 10 },
+  { width: 30, height: 250, x: '72%', y: '20%',  color: 'rgba(255,255,255,0.06)', delay: 0.8, duration: 12 },
 ]
 
 export function DiagonalShapes() {
@@ -39,7 +41,7 @@ export function DiagonalShapes() {
         }}
       />
 
-      {/* Floating diagonal bars */}
+      {/* Floating diagonal bars — parallelograms matching logo stripe shape */}
       {bars.map((bar, i) => (
         <motion.div
           key={i}
@@ -53,28 +55,23 @@ export function DiagonalShapes() {
             border: '1px solid rgba(255,255,255,0.08)',
             backdropFilter: 'blur(12px)',
             WebkitBackdropFilter: 'blur(12px)',
+            transform: `skewX(${LOGO_SKEW}deg)`,
             transformOrigin: 'center center',
             willChange: 'transform',
           }}
           initial={
             prefersReducedMotion
-              ? { opacity: 1, rotate: bar.rotation }
-              : { opacity: 0, rotate: bar.rotation - 5 }
+              ? { opacity: 1 }
+              : { opacity: 0 }
           }
           animate={
             prefersReducedMotion
-              ? { opacity: 1, rotate: bar.rotation }
+              ? { opacity: 1 }
               : {
                   opacity: 1,
-                  rotate: bar.rotation,
                   y: [0, 15, 0],
                   transition: {
                     opacity: {
-                      delay: bar.delay,
-                      duration: 0.8,
-                      ease: [0.23, 0.86, 0.39, 0.96],
-                    },
-                    rotate: {
                       delay: bar.delay,
                       duration: 0.8,
                       ease: [0.23, 0.86, 0.39, 0.96],
