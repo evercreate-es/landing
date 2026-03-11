@@ -1,7 +1,6 @@
 'use client'
 
-import { useReducedMotion } from 'framer-motion'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import Image from 'next/image'
 import { DiagonalShapes } from './DiagonalShapes'
 import { CodeEntry } from './CodeEntry'
