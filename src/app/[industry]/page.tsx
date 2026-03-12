@@ -5,6 +5,7 @@ import {
   getAllIndustrySlugs,
   getIndustryBySlug,
   LANDING_SUBLINE,
+  LANDING_SUBTITLE,
 } from '@/lib/landing/industries'
 
 export const dynamicParams = false
@@ -24,7 +25,7 @@ export async function generateMetadata({
 
   return {
     title: `Evercreate — ${industry.name}`,
-    description: `${industry.subtitle} ${LANDING_SUBLINE}`,
+    description: `${industry.headline} ${LANDING_SUBTITLE}`,
   }
 }
 
@@ -46,7 +47,7 @@ export default async function IndustryPage({
       subtitle={industry.subtitle}
       subline={LANDING_SUBLINE}
       industry={industry.slug}
-      badge={industry.name}
+      badge={`Early Access for ${industry.badgeLabel} — Limited Spots`}
     />
   )
 }
