@@ -85,7 +85,7 @@ insert into promo_codes (code, industry, max_uses) values
   ('RETAIL-VIP', 'retail', 50),
   ('FOOD-VIP', 'food-beverages', 50),
   ('INVESTMENT-VIP', 'investment-management', 50),
-  ('CRE-VIP', 'commercial-real-estate', 50),
+  ('REALESTATE-VIP', 'real-estate', 50),
   ('TRANSPORT-VIP', 'transportation', 50),
   ('VC-VIP', 'venture-capital', 50),
   ('CIVILENG-VIP', 'civil-engineering', 50),

@@ -46,7 +46,7 @@ export const industries: Industry[] = [
   { slug: 'retail', name: 'Retail', badgeLabel: 'Retail Businesses', orgLabel: 'business', code: 'RETAIL-VIP', headline: 'Inventory, stores, sales, suppliers...' },
   { slug: 'food-beverages', name: 'Food & Beverages', badgeLabel: 'Food & Beverage Companies', orgLabel: 'business', code: 'FOOD-VIP', headline: 'Orders, suppliers, inventory, distribution...' },
   { slug: 'investment-management', name: 'Investment Management', badgeLabel: 'Investment Firms', orgLabel: 'firm', code: 'INVESTMENT-VIP', headline: 'Portfolios, clients, compliance, reporting...' },
-  { slug: 'commercial-real-estate', name: 'Commercial Real Estate', badgeLabel: 'CRE Firms', orgLabel: 'firm', code: 'CRE-VIP', headline: 'Properties, tenants, leases, deals...' },
+  { slug: 'real-estate', name: 'Real Estate', badgeLabel: 'Real Estate Firms', orgLabel: 'firm', code: 'REALESTATE-VIP', headline: 'Properties, agents, listings, transactions...' },
   { slug: 'transportation', name: 'Transportation & Trucking', badgeLabel: 'Trucking & Transportation Companies', orgLabel: 'operation', code: 'TRANSPORT-VIP', headline: 'Fleet, drivers, routes, dispatch...' },
   { slug: 'venture-capital', name: 'Venture Capital & Private Equity', badgeLabel: 'VC & PE Firms', orgLabel: 'fund', code: 'VC-VIP', headline: 'Deals, portfolios, LPs, due diligence...' },
   { slug: 'civil-engineering', name: 'Civil Engineering', badgeLabel: 'Civil Engineering Firms', orgLabel: 'firm', code: 'CIVILENG-VIP', headline: 'Projects, permits, drawings, inspections...' },
