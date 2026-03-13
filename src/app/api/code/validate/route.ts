@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
 
     // Internal test code — bypasses DB, no usage tracked
     const testCode = process.env.TEST_CODE
-    if (testCode && code.toUpperCase().trim() === testCode.toUpperCase()) {
+    if (testCode && code.toUpperCase().trim() === testCode.trim().toUpperCase()) {
       return NextResponse.json({ valid: true, industry: 'test' })
     }
 
