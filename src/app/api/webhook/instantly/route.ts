@@ -1,10 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServiceClient } from '@/lib/supabase/server'
+import { instantlyGet, instantlyPost } from '@/lib/instantly'
 
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN!
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID!
-const INSTANTLY_API_KEY = process.env.INSTANTLY_API_KEY!
-const INSTANTLY_API = 'https://api.instantly.ai/api/v2'
 
 // ── Telegram ─────────────────────────────────────────────
 
@@ -19,27 +18,6 @@ async function sendTelegram(text: string) {
       disable_web_page_preview: true,
     }),
   })
-}
-
-// ── Instantly API helpers ────────────────────────────────
-
-async function instantlyGet(endpoint: string) {
-  const resp = await fetch(`${INSTANTLY_API}${endpoint}`, {
-    headers: { Authorization: `Bearer ${INSTANTLY_API_KEY}` },
-  })
-  return resp.json()
-}
-
-async function instantlyPost(endpoint: string, body: Record<string, unknown>) {
-  const resp = await fetch(`${INSTANTLY_API}${endpoint}`, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${INSTANTLY_API_KEY}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-  })
-  return resp.json()
 }
 
 // ── Auto-reply to interested leads ───────────────────────
